@@ -21,8 +21,8 @@ export default {
   getUserInfo () {
     return axios.get(api.getUserInfo(), {headers: headers})
   },
-  sendCode (phone) {
-    return axios.get(api.sendCode(), {params: {phone: phone}}, {headers: headers})
+  sendCode (email) {
+    return axios.get(api.sendCode(), {params: {email: email}}, {headers: headers})
   },
   logout () {
     return axios.get(api.logout(), {headers: headers})

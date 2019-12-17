@@ -18,6 +18,9 @@
         <el-form-item prop="phone">
           <el-input v-model.number="hrInfo.phone" placeholder="手机号"></el-input>
         </el-form-item>
+        <el-form-item prop="email">
+          <el-input v-model="hrInfo.email" placeholder="邮箱"></el-input>
+        </el-form-item>
         <el-form-item prop="code">
         <el-input v-model.number="hrInfo.code"  style="width: 270px;padding-right: 10px;" placeholder="验证码"></el-input>
           <el-button  @click="sendCode">{{this.msg}}</el-button>
@@ -34,9 +37,6 @@
           </el-form-item>
            <div @click="changeClick" class="tips" v-if="tipsShow">没有您所在的公司？请添加</div>
         </div>
-        <el-form-item prop="email">
-          <el-input v-model="hrInfo.email" placeholder="邮箱"></el-input>
-        </el-form-item>
         <el-form-item>
           <el-button type="primary" class="registerBtn" @click="hrSubmit('hrInfo')">注册</el-button>
         </el-form-item>
@@ -347,9 +347,9 @@ export default {
 
     sendCode() {
       const TIME_COUNT = 60
-      if (!/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/.test(this.hrInfo.phone)) return
+      if (!/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/.test(this.hrInfo.email)) return
       fetch
-        .sendCode(this.hrInfo.phone)
+        .sendCode(this.hrInfo.email)
         .then(res => {
           if (res.status === 200) {
             if (res.data.success === true) {

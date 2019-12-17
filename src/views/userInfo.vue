@@ -5,7 +5,7 @@
         <div>
           <el-upload
             class="avatar-uploader"
-            action="http://personfilter.clairezyw.com/user/avatar"
+            action="http://192.168.0.106:10000/outside/avatar"
             name="avatar"
             :headers="head"
             :show-file-list="false"
@@ -114,7 +114,7 @@
     },
     computed: {
       setDefault () {
-        return this.list.avatar ? this.list.avatar : 'https://upload-images.jianshu.io/upload_images/9381131-a48cdb07b37dcff1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'
+        return this.list.avatar ? this.list.avatar : 'http://rasklg6c3.hn-bkt.clouddn.com/avatar'
       }
     },
     mounted () {
