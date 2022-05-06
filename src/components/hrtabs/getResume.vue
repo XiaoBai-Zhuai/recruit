@@ -3,7 +3,6 @@
     <div v-if="show" class="nofind">
       <img
         src="http://rasklg6c3.hn-bkt.clouddn.com/wutoudi" style="margin: 0 auto">
-      <p>暂时没有记录哦</p>
     </div>
     <div v-for="(item, index) in list" :key="index" v-if="!show">
       <el-card shadow="hover" class="receiveBox">

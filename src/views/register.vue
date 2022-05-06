@@ -22,7 +22,7 @@
           <el-input v-model="hrInfo.email" placeholder="邮箱"></el-input>
         </el-form-item>
         <el-form-item prop="code">
-        <el-input v-model.number="hrInfo.code"  style="width: 270px;padding-right: 10px;" placeholder="验证码"></el-input>
+        <el-input v-model="hrInfo.code"  style="width: 270px;padding-right: 10px;" placeholder="验证码"></el-input>
           <el-button  @click="sendCode">{{this.msg}}</el-button>
         </el-form-item>
         <div v-if="isHr">

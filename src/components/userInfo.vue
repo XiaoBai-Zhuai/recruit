@@ -1,7 +1,7 @@
 <template>
   <div>
-    <table v-if="!isEdit" class="container">
-      <th> 个人信息</th>
+    <table v-show="!isEdit" class="container">
+      <th style="text-align: center"> 个人信息</th>
       <tr>
         <td>昵称：</td>
         <td>{{list.nickname}}</td>
@@ -39,13 +39,13 @@
         <td>{{list.intentionCompany}}</td>
       </tr>
       <tr>
-        <td> 我感兴趣的工作：</td>
+        <td>我感兴趣的工作：</td>
         <td>{{list.intentionJob}}</td>
       </tr>
       <el-button class="edit" @click="changeEdit">编辑</el-button>
     </table>
     <el-form  :model="list" status-icon :rules="rules2" ref="list" label-width="100px" class="formWrap"
-             v-if="isEdit">
+             v-show="isEdit">
       <el-form-item label="昵称" prop="nickname">
         <el-input v-model="list.nickname" auto-complete="off"></el-input>
       </el-form-item>
@@ -75,7 +75,12 @@
         </el-select>
       </el-form-item>
       <el-form-item label="学历" prop="education">
-        <el-input v-model="list.education"></el-input>
+        <el-select v-model="list.education" placeholder="请选择学历" style="width: 100%">
+          <el-option label="专科" value="专科"></el-option>
+          <el-option label="本科" value="本科"></el-option>
+          <el-option label="硕士" value="硕士"></el-option>
+          <el-option label="博士" value="博士"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="学校" prop="school">
         <el-input v-model="list.school"></el-input>
@@ -110,7 +115,7 @@
 <style>
   table {
    width: 600px;
-   font-size: 16px
+   font-size: 16px;
   }
 
   table tr td {
@@ -121,6 +126,7 @@
   .formWrap {
     width: 500px;
     font-size: 18px;
+    overflow: auto;
   }
 
   .edit {
@@ -206,7 +212,7 @@
         }
       }
       return {
-        isEdit: true,
+        isEdit: false,
         rules2: {
           nickname: [{validator: checknickname, trigger: 'blur'}],
           name: [{validator: checkname, trigger: 'blur'}],
@@ -220,6 +226,26 @@
           intentionJob: [{validator: checkjob, trigger: 'blur'}]
         },
         options: [
+          {
+            value: '2013',
+            label: '2013'
+          },
+          {
+            value: '2014',
+            label: '2014'
+          },
+          {
+            value: '2015',
+            label: '2015'
+          },
+          {
+            value: '2016',
+            label: '2016'
+          },
+          {
+            value: '2017',
+            label: '2017'
+          },
           {
             value: '2018',
             label: '2018'
@@ -239,6 +265,26 @@
           {
             value: '2022',
             label: '2022'
+          },
+          {
+            value: '2023',
+            label: '2023'
+          },
+          {
+            value: '2024',
+            label: '2024'
+          },
+          {
+            value: '2025',
+            label: '2025'
+          },
+          {
+            value: '2026',
+            label: '2026'
+          },
+          {
+            value: '2027',
+            label: '2027'
           }
         ],
         companyOptions: [],
@@ -278,10 +324,16 @@
                     message: '保存成功',
                     type: 'success'
                   })
+                  // 切换到非编辑界面
+                  this.changeEdit()
                 }
               })
               .catch(e => {
                 console.log(e)
+                this.$message({
+                  message: '保存失败',
+                  type: 'error'
+                })
               })
           } else {
             console.log('error submit!!')

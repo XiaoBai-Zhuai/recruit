@@ -2,8 +2,7 @@
   <div class="deliveryWrap">
     <div v-if="!show" class="nofind">
       <img
-        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524746733938&di=9ae24b5205e97c2876b48d3ff26f1c23&imgtype=0&src=http%3A%2F%2Fwww.snlfjx.com%2Fforum%2FSkin%2Fimgs%2Fno-data.png" style="margin: 0 auto">
-      <p>暂时没有记录哦</p>
+        src="http://rasklg6c3.hn-bkt.clouddn.com/wutoudi" style="margin: 0 auto">
     </div>
     <div v-for="(item, index) in list" :key="index" v-if="show" @click="checkDetail(item.recruitId)">
       <el-card shadow="hover" class="deliverycard">
